@@ -11,31 +11,32 @@
           <b-form>
             <b-form-group label="姓名">
               <b-form-input
-                v-model="user.name"
+                v-model="$v.user.name.$model"
                 type="text"
-                placeholder="输入您的名称(选填)"
+                placeholder="输入您的名称（选填）"
               ></b-form-input>
             </b-form-group>
             <b-form-group label="手机号">
               <b-form-input
-                v-model="user.telephone"
+                v-model="$v.user.telephone.$model"
                 type="number"
                 placeholder="输入手机号"
+                :state="validateState('telephone')"
               ></b-form-input>
-              <b-form-text
-                id="password-help-block"
-                text-variant="danger"
-                v-if="showTelephoneValidate"
-              >
-                手机号必须为11位
-              </b-form-text>
+              <b-form-invalid-feedback :state="validateState('telephone')">
+                手机号不符合要求
+              </b-form-invalid-feedback>
             </b-form-group>
             <b-form-group label="密码">
               <b-form-input
-                v-model="user.password"
+                v-model="$v.user.password.$model"
                 type="password"
-                placeholder="输入密码"
+                placeholder="输入密码）"
+                :state="validateState('password')"
               ></b-form-input>
+              <b-form-invalid-feedback :state="validateState('password')">
+                密码必须大于等于 6 位
+              </b-form-invalid-feedback>
             </b-form-group>
             <b-form-group>
               <b-button
@@ -50,8 +51,10 @@
     </b-row>
   </div>
 </template>
-
 <script>
+import { required, minLength } from 'vuelidate/lib/validators';
+// import customValidator from '@/helper/validator';
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -60,19 +63,50 @@ export default {
         telephone: '',
         password: '',
       },
-      showTelephoneValidate: false,
     };
   },
- methods: {
+  validations: {
+    user: {
+      name: {
+      },
+      telephone: {
+        required,
+        minLength: minLength(11),
+        maxLength: maxLength(11),
+      },
+      password: {
+        required,
+        minLength: minLength(6),
+      },
+    },
+  },
+  methods: {
+    ...mapActions('userModule', { userRegister: 'register' }),
+    validateState(name) {
+      // 这里是es6 解构赋值
+      const { $dirty, $error } = this.$v.user[name];
+      return $dirty ? !$error : null;
+    },
     register() {
-      if (this.user.telephone.length != 11) {
-        this.showTelephoneValidate = true;
+      // 验证数据
+      this.$v.user.$touch();
+      if (this.$v.user.$anyError) {
+        return;
       }
-      console.log('register');
+      // 请求
+      this.userRegister(this.user).then(() => {
+        // 跳转主页
+        this.$router.replace({ name: 'Home' });
+      }).catch((err) => {
+        this.$bvToast.toast(err.response.data.msg, {
+          title: '数据验证错误',
+          variant: 'danger',
+          solid: true,
+        });
+      });
     },
   },
 };
 </script>
-
 <style lang="scss" scoped>
 </style>
