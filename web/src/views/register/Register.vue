@@ -53,8 +53,8 @@
 </template>
 <script>
 import { required, minLength } from 'vuelidate/lib/validators';
-// import customValidator from '@/helper/validator';
-import { mapActions } from 'vuex';
+import customValidator from '@/helper/validator';
+// import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -71,8 +71,7 @@ export default {
       },
       telephone: {
         required,
-        minLength: minLength(11),
-        maxLength: maxLength(11),
+        telephone: customValidator.telephoneValidator,
       },
       password: {
         required,
@@ -81,7 +80,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('userModule', { userRegister: 'register' }),
+    // ...mapActions('userModule', { userRegister: 'register' }),
     validateState(name) {
       // 这里是es6 解构赋值
       const { $dirty, $error } = this.$v.user[name];
@@ -94,9 +93,24 @@ export default {
         return;
       }
       // 请求
-      this.userRegister(this.user).then(() => {
+      // this.userRegister(this.user).then(() => {
+      //   // 跳转主页
+      //   this.$router.replace({ name: 'Home' });
+      // }).catch((err) => {
+      //   this.$bvToast.toast(err.response.data.msg, {
+      //     title: '数据验证错误',
+      //     variant: 'danger',
+      //     solid: true,
+      //   });
+      // });
+      const api = "http://localhost:1016/api/auth/register"
+      this.axios.post(api, { ...this.user }).then((res) => {
+        // 保存token
+        console.log(res.data);
+        localStorage.setItem("token", res.data.data.token);
+
         // 跳转主页
-        this.$router.replace({ name: 'Home' });
+        this.$router.replace({ name: 'Home'});
       }).catch((err) => {
         this.$bvToast.toast(err.response.data.msg, {
           title: '数据验证错误',
@@ -104,6 +118,7 @@ export default {
           solid: true,
         });
       });
+      console.log('register');
     },
   },
 };
