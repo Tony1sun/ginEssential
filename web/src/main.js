@@ -11,15 +11,14 @@ import store from './store';
 // scss style
 import './assets/scss/index.scss';
 
-// Import Bootstrap an BootstrapVue   CSS files (order is important)
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.config.productionTip = false;
 
+// Install BootstrapVue
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
+// vuelidate
 Vue.use(Vuelidate);
 
 // axios

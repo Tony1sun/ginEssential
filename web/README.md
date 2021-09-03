@@ -1,4 +1,4 @@
-# ginessential-vue
+# ginessentail-vue
 
 ## Project setup
 ```

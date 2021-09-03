@@ -1,27 +1,20 @@
 Arguments: 
-  /Users/sunqigang/.nvm/versions/node/v10.14.2/bin/node /Users/sunqigang/.yarn/bin/yarn.js serve
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add vue-axios
 
 PATH: 
-  /Users/sunqigang/.yarn/bin:/Users/sunqigang/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/sunqigang/.yarn/bin:/Users/sunqigang/.config/yarn/global/node_modules/.bin:/Users/sunqigang/.nvm/versions/node/v10.14.2/bin:/usr/local/mysql/bin:/usr/local/mysql/bin
+  C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Python35\Scripts\;C:\Python35\;C:\Program Files\Python37\Scripts\;C:\Program Files\Python37\;D:\Ruby27-x64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\cmder;D:\Git\cmd;D:\allure-2.13.1\bin;D:\Program Files\Redis\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Go\bin;C:\Program Files\Java\jdk-12.0.1;C:\Program Files\Java\jdk-12.0.1\bin;D:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs;C:\Users\sunqigang_vendor\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\sunqigang_vendor\AppData\Local\Programs\Python\Python36\;C:\Users\sunqigang_vendor\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\sunqigang_vendor\AppData\Local\Programs\Python\Python37\;C:\Users\sunqigang_vendor\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\JetBrains\PyCharm 2020.1\bin;D:\Microsoft VS Code\bin;D:\Go\bin;C:\JetBrains\GoLand 2020.2.3\bin;C:\Users\sunqigang_vendor\go\bin;D:\nvm;C:\Program Files\nodejs;C:\Users\sunqigang_vendor\AppData\Local\Yarn\bin;C:\Program Files\nodejs;
 
 Yarn version: 
-  1.22.5
+  1.19.2
 
 Node version: 
   10.14.2
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received type object
-      at assertPath (path.js:39:11)
-      at Object.isAbsolute (path.js:1141:5)
-      at module.exports.exports.default (/Users/sunqigang/.yarn/lib/cli.js:101024:16)
-      at /Users/sunqigang/.yarn/lib/cli.js:51525:63
-      at Generator.next (<anonymous>)
-      at step (/Users/sunqigang/.yarn/lib/cli.js:310:30)
-      at /Users/sunqigang/.yarn/lib/cli.js:321:13
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\sunqigang_vendor\AppData\Local\Yarn\Cache\v6\npm-binary-extensions-2.2.0-75f502eeaf9ffde42fc98829645be4ea76bd9e2d-integrity\node_modules\binary-extensions\binary-extensions.json.d.ts' -> 'D:\ginEssential\web\node_modules\watchpack\node_modules\binary-extensions\binary-extensions.json.d.ts'
 
 npm manifest: 
   {
@@ -34,12 +27,15 @@ npm manifest:
       "lint": "vue-cli-service lint"
     },
     "dependencies": {
+      "axios": "^0.21.1",
       "bootstrap": "^5.1.0",
       "bootstrap-vue": "^2.21.2",
-      "core-js": "^3.6.5",
+      "core-js": "^3.16.4",
       "install": "^0.13.0",
       "vue": "^2.6.14",
+      "vue-axios": "^3.2.5",
       "vue-router": "^3.2.0",
+      "vuelidate": "^0.7.6",
       "vuex": "^3.4.0"
     },
     "devDependencies": {
@@ -55,8 +51,7 @@ npm manifest:
       "eslint-plugin-vue": "^6.2.2",
       "node-sass": "^4.12.0",
       "sass-loader": "^8.0.2",
-      "vue-template-compiler": "^2.6.11",
-      "resolutions": { "eslint-loader": "2.1.2" }
+      "vue-template-compiler": "^2.6.11"
     }
   }
 
@@ -1984,6 +1979,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
     integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
   
+  axios@^0.21.1:
+    version "0.21.1"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+    integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+    dependencies:
+      follow-redirects "^1.10.0"
+  
   babel-eslint@^10.1.0:
     version "10.1.0"
     resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
@@ -2918,6 +2920,11 @@ Lockfile:
     dependencies:
       browserslist "^4.16.8"
       semver "7.0.0"
+  
+  core-js@^3.16.4:
+    version "3.17.1"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.17.1.tgz#b39e086f413789cf2ca4680c4ecd1b36a50ba277"
+    integrity sha512-C8i/FNpVN2Ti89QIJcFn9ZQmnM+HaAQr2OpE+ja3TRM9Q34FigsGlAVuwPGkIgydSVClo/1l1D1grP8LVt9IYA==
   
   core-js@^3.6.5:
     version "3.16.3"
@@ -4232,7 +4239,7 @@ Lockfile:
       inherits "^2.0.3"
       readable-stream "^2.3.6"
   
-  follow-redirects@^1.0.0:
+  follow-redirects@^1.0.0, follow-redirects@^1.10.0:
     version "1.14.2"
     resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.2.tgz#cecb825047c00f5e66b142f90fed4f515dec789b"
     integrity sha512-yLR6WaE2lbF0x4K2qE2p9PEXKLDjUjnR/xmjS3wHAYxtlsI9MLLBJUZirAHKzUZDGLxje7w/cXR49WOUo4rbsA==
@@ -8932,6 +8939,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
     integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
   
+  vue-axios@^3.2.5:
+    version "3.2.5"
+    resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.2.5.tgz#b3bd0c82a44cc9164aeca0efa071ac103e15767f"
+    integrity sha512-V7XUzu0v3WOzd8PEF9m/ZoVivap+ToBPOXrhI8AsnczD93YXvGG+HkeQhJHAF/jeav8CsPDF3X/Z2vCqBbjsMQ==
+  
   vue-eslint-parser@^7.0.0:
     version "7.10.0"
     resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.10.0.tgz#ea4e4b10fd10aa35c8a79ac783488d8abcd29be8"
@@ -9005,6 +9017,11 @@ Lockfile:
     version "2.6.14"
     resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
     integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
+  
+  vuelidate@^0.7.6:
+    version "0.7.6"
+    resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.6.tgz#84100c13b943470660d0416642845cd2a1edf4b2"
+    integrity sha512-suzIuet1jGcyZ4oUSW8J27R2tNrJ9cIfklAh63EbAkFjE380iv97BAiIeolRYoB9bF9usBXCu4BxftWN1Dkn3g==
   
   vuex@^3.4.0:
     version "3.6.2"
