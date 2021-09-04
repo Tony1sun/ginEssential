@@ -7,4 +7,5 @@ type RestController interface {
 	Update(ctx *gin.Context)
 	Show(ctx *gin.Context)
 	Delete(ctx *gin.Context)
+	
 }
