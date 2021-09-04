@@ -46,5 +46,3 @@ func (c CategoryRepository) DeleteById(id int) error {
 	}
 	return nil
 }
-
-
